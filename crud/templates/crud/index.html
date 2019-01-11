@@ -1,0 +1,17 @@
+<!--if list_of_posts has at least 1 element-->
+{% if list_of_posts %} 
+<ul>
+	{% for element in list_of_posts %}
+		<li> {{element.post_text}} id: {{element.id}} date: {{element.pub_date}} </li>
+	{% endfor %}
+</ul>
+{% else %}
+	<p> Database is corrupted or empty </p>
+{% endif %}
+</h3>
+
+<form action = "{% url 'add_post' %}" method="post">
+{% csrf_token %}
+	<input type="text" name="text_field">
+	<input type="submit" value="Send">
+</form>
